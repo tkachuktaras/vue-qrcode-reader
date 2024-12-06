@@ -12,6 +12,7 @@
   "packageManager": "pnpm@8.3.1",
   "type": "module",
   "scripts": {
+    "deploy": "vite build && gh-pages -d docs",
     "build": "vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -51,6 +52,7 @@
     "eslint": "8.56.0",
     "eslint-plugin-prettier": "5.1.0",
     "eslint-plugin-vue": "9.19.2",
+    "gh-pages": "^6.2.0",
     "prettier": "3.1.1",
     "semantic-release": "22.0.12",
     "typescript": "5.5.3",

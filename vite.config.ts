@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
+  base: 'vue-qrcode-reader',
   esbuild: {
     supported: {
       'optional-catch-binding': false
