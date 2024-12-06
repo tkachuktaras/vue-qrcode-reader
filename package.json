@@ -1,5 +1,5 @@
 {
-  "name": "vue-qrcode-reader",
+  "name": "/vue-qrcode-reader/",
   "version": "0.0.0-development",
   "description": "A set of Vue.js components for detecting and decoding QR codes.",
   "author": {
@@ -12,7 +12,7 @@
   "packageManager": "pnpm@8.3.1",
   "type": "module",
   "scripts": {
-    "deploy": "vite build && gh-pages -d docs",
+    "deploy": "vitepress build docs && gh-pages -d docs/.vitepress/dist",
     "build": "vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
