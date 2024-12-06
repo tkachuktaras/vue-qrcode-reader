@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-86c9b217'], (function (workbox) { 'use strict';
+define(['./workbox-ab7aa862'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -79,208 +79,208 @@ define(['./workbox-86c9b217'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "404.html",
-    "revision": "d5fd001f82531cbc2eac41389a5ef809"
+    "revision": "0088153a64c906f250dee23541c93abe"
   }, {
     "url": "api/QrcodeCapture.html",
-    "revision": "0f67120bbc2fb84973b0c1ea568bb89f"
+    "revision": "a964b544ffbfea0637da84ed99e20a24"
   }, {
     "url": "api/QrcodeDropZone.html",
-    "revision": "5ed332edd490a133ad0a5bfe09994078"
+    "revision": "f5b0449dcdfb5506598c4725f9a3b3df"
   }, {
     "url": "api/QrcodeStream.html",
-    "revision": "dfc6ec70a127c1a818d9dc234a2482cf"
+    "revision": "4d3215626776a81a8bdd6c8fe81369a8"
   }, {
-    "url": "assets/api_QrcodeCapture.md.GlYdj7pr.js",
+    "url": "assets/api_QrcodeCapture.md.PsTfZWQV.js",
     "revision": null
   }, {
-    "url": "assets/api_QrcodeCapture.md.GlYdj7pr.lean.js",
+    "url": "assets/api_QrcodeCapture.md.PsTfZWQV.lean.js",
     "revision": null
   }, {
-    "url": "assets/api_QrcodeDropZone.md.DTUFZSpV.js",
+    "url": "assets/api_QrcodeDropZone.md.dyQ8viWZ.js",
     "revision": null
   }, {
-    "url": "assets/api_QrcodeDropZone.md.DTUFZSpV.lean.js",
+    "url": "assets/api_QrcodeDropZone.md.dyQ8viWZ.lean.js",
     "revision": null
   }, {
-    "url": "assets/api_QrcodeStream.md.P3i2WWbk.js",
+    "url": "assets/api_QrcodeStream.md.e6YkpBu9.js",
     "revision": null
   }, {
-    "url": "assets/api_QrcodeStream.md.P3i2WWbk.lean.js",
+    "url": "assets/api_QrcodeStream.md.e6YkpBu9.lean.js",
     "revision": null
   }, {
-    "url": "assets/app.C9LjFXWE.js",
+    "url": "assets/app.1k-0yCrK.js",
     "revision": null
   }, {
-    "url": "assets/chunks/@localSearchIndexroot.DH9Y8fYA.js",
+    "url": "assets/chunks/@localSearchIndexroot._LIA1C9b.js",
     "revision": null
   }, {
-    "url": "assets/chunks/camera.CFPXBeoS.js",
+    "url": "assets/chunks/camera.Bn9F7jfT.js",
     "revision": null
   }, {
-    "url": "assets/chunks/framework.BeH60Y6U.js",
+    "url": "assets/chunks/framework.mHXEP_CY.js",
     "revision": null
   }, {
-    "url": "assets/chunks/QrcodeStream.vue_vue_type_script_setup_true_lang.BtTmPR3n.js",
+    "url": "assets/chunks/QrcodeStream.vue_vue_type_script_setup_true_lang.N8RaWypI.js",
     "revision": null
   }, {
-    "url": "assets/chunks/safari_32x32.Bkuv9jEj.js",
+    "url": "assets/chunks/safari_32x32.yJUh4Fxj.js",
     "revision": null
   }, {
-    "url": "assets/chunks/theme.CPTmrBXu.js",
+    "url": "assets/chunks/theme.lGc0LNcC.js",
     "revision": null
   }, {
-    "url": "assets/chunks/VPLocalSearchBox.D2MXPHYY.js",
+    "url": "assets/chunks/VPLocalSearchBox.N85Bpxx4.js",
     "revision": null
   }, {
-    "url": "assets/demos_DragDrop.md.DibCrRaI.js",
+    "url": "assets/demos_DragDrop.md.Zpp84C0s.js",
     "revision": null
   }, {
-    "url": "assets/demos_DragDrop.md.DibCrRaI.lean.js",
+    "url": "assets/demos_DragDrop.md.Zpp84C0s.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_FullDemo.md.C8fES2qR.js",
+    "url": "assets/demos_FullDemo.md.gA9eRIhB.js",
     "revision": null
   }, {
-    "url": "assets/demos_FullDemo.md.C8fES2qR.lean.js",
+    "url": "assets/demos_FullDemo.md.gA9eRIhB.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_Fullscreen.md.Ct6KdM4W.js",
+    "url": "assets/demos_Fullscreen.md.55gwXbcs.js",
     "revision": null
   }, {
-    "url": "assets/demos_Fullscreen.md.Ct6KdM4W.lean.js",
+    "url": "assets/demos_Fullscreen.md.55gwXbcs.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_LoadingIndicator.md.BRpSpGyH.js",
+    "url": "assets/demos_LoadingIndicator.md.bmvXoJPM.js",
     "revision": null
   }, {
-    "url": "assets/demos_LoadingIndicator.md.BRpSpGyH.lean.js",
+    "url": "assets/demos_LoadingIndicator.md.bmvXoJPM.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_ScanSameQrcodeMoreThanOnce.md.2OGZZCxE.js",
+    "url": "assets/demos_ScanSameQrcodeMoreThanOnce.md.eZx2-5rn.js",
     "revision": null
   }, {
-    "url": "assets/demos_ScanSameQrcodeMoreThanOnce.md.2OGZZCxE.lean.js",
+    "url": "assets/demos_ScanSameQrcodeMoreThanOnce.md.eZx2-5rn.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_Simple.md.CjVnN3WB.js",
+    "url": "assets/demos_Simple.md.th0oC-oC.js",
     "revision": null
   }, {
-    "url": "assets/demos_Simple.md.CjVnN3WB.lean.js",
+    "url": "assets/demos_Simple.md.th0oC-oC.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_SwitchCamera.md.8byYJfp8.js",
+    "url": "assets/demos_SwitchCamera.md.h_jxPA_f.js",
     "revision": null
   }, {
-    "url": "assets/demos_SwitchCamera.md.8byYJfp8.lean.js",
+    "url": "assets/demos_SwitchCamera.md.h_jxPA_f.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_Torch.md.B7aiXoF-.js",
+    "url": "assets/demos_Torch.md.7d2Jqvea.js",
     "revision": null
   }, {
-    "url": "assets/demos_Torch.md.B7aiXoF-.lean.js",
+    "url": "assets/demos_Torch.md.7d2Jqvea.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_Upload.md.DoVnEC9I.js",
+    "url": "assets/demos_Upload.md.BFZcodYm.js",
     "revision": null
   }, {
-    "url": "assets/demos_Upload.md.DoVnEC9I.lean.js",
+    "url": "assets/demos_Upload.md.BFZcodYm.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_Validate.md.DZ8nJAFx.js",
+    "url": "assets/demos_Validate.md.RGAAbt3u.js",
     "revision": null
   }, {
-    "url": "assets/demos_Validate.md.DZ8nJAFx.lean.js",
+    "url": "assets/demos_Validate.md.RGAAbt3u.lean.js",
     "revision": null
   }, {
-    "url": "assets/index.md.LZGnsC_L.js",
+    "url": "assets/index.md.IyM1TcnC.js",
     "revision": null
   }, {
-    "url": "assets/index.md.LZGnsC_L.lean.js",
+    "url": "assets/index.md.IyM1TcnC.lean.js",
     "revision": null
   }, {
-    "url": "assets/inter-italic-cyrillic-ext.5XJwZIOp.woff2",
+    "url": "assets/inter-italic-cyrillic-ext.OVycGSDq.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-italic-cyrillic.D6csxwjC.woff2",
+    "url": "assets/inter-italic-cyrillic.-nLMcIwj.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-italic-greek-ext.CHOfFY1k.woff2",
+    "url": "assets/inter-italic-greek-ext.hznxWNZO.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-italic-greek.9J96vYpw.woff2",
+    "url": "assets/inter-italic-greek.PSfer2Kc.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-italic-latin-ext.BGcWXLrn.woff2",
+    "url": "assets/inter-italic-latin-ext.RnFly65-.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-italic-latin.DbsTr1gm.woff2",
+    "url": "assets/inter-italic-latin.27E69YJn.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-italic-vietnamese.DHNAd7Wr.woff2",
+    "url": "assets/inter-italic-vietnamese.xzQHe1q1.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-cyrillic-ext.DxP3Awbn.woff2",
+    "url": "assets/inter-roman-cyrillic-ext.8T9wMG5w.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-cyrillic.CMhn1ESj.woff2",
+    "url": "assets/inter-roman-cyrillic.jIZ9REo5.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-greek-ext.D0mI3NpI.woff2",
+    "url": "assets/inter-roman-greek-ext.9JiNzaSO.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-greek.JvnBZ4YD.woff2",
+    "url": "assets/inter-roman-greek.Cb5wWeGA.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-latin-ext.ZlYT4o7i.woff2",
+    "url": "assets/inter-roman-latin-ext.GZWE-KO4.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-latin.Bu8hRsVA.woff2",
+    "url": "assets/inter-roman-latin.bvIUbFQP.woff2",
     "revision": null
   }, {
-    "url": "assets/inter-roman-vietnamese.ClpjcLMQ.woff2",
+    "url": "assets/inter-roman-vietnamese.paY3CzEB.woff2",
     "revision": null
   }, {
-    "url": "assets/style.DyprZrAL.css",
+    "url": "assets/style.zO48ZKu8.css",
     "revision": null
   }, {
     "url": "camera-switch.svg",
     "revision": "c966900237eef848d4aeb18b0ad64371"
   }, {
     "url": "checkmark.svg",
-    "revision": "398fc16c5cbd6c20b529b76742c33942"
+    "revision": "2466ed96efd1b98dd0b4fef9a0895194"
   }, {
     "url": "debug-memory-leak.html",
-    "revision": "baffbefe1bde1d10f0c089b20f0cb9ed"
+    "revision": "41d3e7f3f5512f9d6bd4e71fe1879a56"
   }, {
     "url": "demos/DragDrop.html",
-    "revision": "ffa9c34c82239be32ec9a1b952c0c027"
+    "revision": "a76498cc0436902d7fb620c4c51d513d"
   }, {
     "url": "demos/FullDemo.html",
-    "revision": "ceaa477bb0f709048f9767ca7e9926b5"
+    "revision": "72f3e9c1ef7b7318ea63d09b27460e70"
   }, {
     "url": "demos/Fullscreen.html",
-    "revision": "836724cfdc2e573ac0f78f1600a4d621"
+    "revision": "58f945bc8e1650cb81ac5df1f25c5e05"
   }, {
     "url": "demos/LoadingIndicator.html",
-    "revision": "4bbd46ad82bdc169394fc2491020a2d0"
+    "revision": "a482122e66a449f1ae41cd3ca4632d7b"
   }, {
     "url": "demos/ScanSameQrcodeMoreThanOnce.html",
-    "revision": "7f7bd15925c2b2c6694e5aeeb0552abb"
+    "revision": "85079e3ef996df243ee89289fa199022"
   }, {
     "url": "demos/Simple.html",
-    "revision": "2a7a0f5216cb8bcbabd42f270ee43c2a"
+    "revision": "314bae8ac90efdce1e547ba7692271db"
   }, {
     "url": "demos/SwitchCamera.html",
-    "revision": "7006d3f333ef3191bf16cdc10eb251c0"
+    "revision": "eb5d0a6cec66a3c48bea7ef09932514b"
   }, {
     "url": "demos/Torch.html",
-    "revision": "16e4f1dafaf9a2068734de1dde6b43ea"
+    "revision": "d4caf821f779d9b73ece5846f8cb09ae"
   }, {
     "url": "demos/Upload.html",
-    "revision": "5adcd19200b67e62f251d244e7459a12"
+    "revision": "918d943c6464d2cef9a845e361ecc6ac"
   }, {
     "url": "demos/Validate.html",
-    "revision": "19ff4db83dae39b581a387ad5f450573"
+    "revision": "61db3625cc0853866de7f7e883f191af"
   }, {
     "url": "flash-off.svg",
     "revision": "8b05f5dcd6712992a544b34520ec7262"
@@ -295,7 +295,7 @@ define(['./workbox-86c9b217'], (function (workbox) { 'use strict';
     "revision": "432c44f09de0b4e0f9e236fad9b8c7f9"
   }, {
     "url": "index.html",
-    "revision": "2bcf1bc1526d5fb174f9772b5f110210"
+    "revision": "0337814f609d85b1b44a7ca34420d6ab"
   }, {
     "url": "logo.png",
     "revision": "5f0c1d6358641bc48207acb9fa0b6182"
@@ -310,10 +310,10 @@ define(['./workbox-86c9b217'], (function (workbox) { 'use strict';
     "revision": "2acda7f8afc7fc2d992b71c201491acd"
   }, {
     "url": "select-camera-demo.html",
-    "revision": "caa12e13f97000bc06e565e64bb8bd0f"
+    "revision": "87059e1457f503ce13cd1b6cab3507e9"
   }, {
     "url": "simple-demo.html",
-    "revision": "d2e0337bc830c36ac24089933500e897"
+    "revision": "94818a49180c00dea2256d84e0654504"
   }, {
     "url": "pwa-192x192.png",
     "revision": "05431c417219f6c247a23488366a2b41"
