@@ -15,10 +15,16 @@
     </p>
 
     <qrcode-stream
-      :constraints="{ facingMode }"
+      :constraints="constraints"
       @error="onError"
     >
-      <button @click="switchCamera">
+      <button class="button" @click="switchCamera">
+        <img
+          :src="withBase('/camera-switch.svg')"
+          alt="switch camera"
+        />
+      </button>
+      <button class="button2" @click="updateCamera">
         <img
           :src="withBase('/camera-switch.svg')"
           alt="switch camera"
@@ -39,21 +45,28 @@ export default {
   data() {
     return {
       facingMode: 'environment',
+      advanced: null,
       noRearCamera: false,
       noFrontCamera: false
     }
   },
 
+  computed: {
+    constraints() {
+      return {
+        facingMode: this.facingMode,
+        advanced: this.advanced || undefined
+      }
+    }
+  },
+
   methods: {
     switchCamera() {
-      switch (this.facingMode) {
-        case 'environment':
-          this.facingMode = 'user'
-          break
-        case 'user':
-          this.facingMode = 'environment'
-          break
-      }
+      this.facingMode = this.facingMode === 'environment' ? 'user' : 'environment';
+    },
+    updateCamera() {
+      let advanced = [{ focusMode: 'manual', focusDistance: 0.33 }];
+      this.advanced = this.advanced ? null : advanced;
     },
 
     onError(error) {
@@ -79,12 +92,21 @@ export default {
 </script>
 
 <style scoped>
-button {
+.button {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-button img {
+.button img {
+  width: 50px;
+  height: 50px;
+}
+.button2 {
+  position: absolute;
+  left: 75px;
+  top: 10px;
+}
+.button2 img {
   width: 50px;
   height: 50px;
 }

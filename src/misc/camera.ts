@@ -14,6 +14,17 @@ type StartTaskResult = {
   }
 }
 
+type UpdateTaskResult = {
+  type: 'update'
+  data: {
+    videoEl: HTMLVideoElement
+    stream: MediaStream
+    capabilities: Partial<MediaTrackCapabilities>
+    constraints: MediaTrackConstraints
+    isTorchOn: boolean
+  }
+}
+
 type StopTaskResult = {
   type: 'stop'
   data: {}
@@ -24,7 +35,7 @@ type FailedTask = {
   error: Error
 }
 
-type TaskResult = StartTaskResult | StopTaskResult | FailedTask
+type TaskResult = StartTaskResult | UpdateTaskResult | StopTaskResult | FailedTask
 
 let taskQueue: Promise<TaskResult> = Promise.resolve({ type: 'stop', data: {} })
 
@@ -197,6 +208,211 @@ export async function start(
   }
 
   assertNever(taskResult)
+}
+
+async function runUpdateTask(
+  stream: MediaStream,
+  videoEl: HTMLVideoElement,
+  constraints: MediaTrackConstraints,
+  torch: boolean
+): Promise<UpdateTaskResult> {
+  console.debug(
+    '[vue-qrcode-reader] updating camera with constraints: ',
+    JSON.stringify(constraints)
+  )
+
+  // At least in Chrome `navigator.mediaDevices` is undefined when the page is
+  // loaded using HTTP rather than HTTPS. Thus `STREAM_API_NOT_SUPPORTED` is
+  // initialized with `false` although the API might actually be supported.
+  // So although `getUserMedia` already should have a built-in mechanism to
+  // detect insecure context (by throwing `NotAllowedError`), we have to do a
+  // manual check before even calling `getUserMedia`.
+  if (window.isSecureContext !== true) {
+    throw new InsecureContextError()
+  }
+
+  if (navigator?.mediaDevices?.getUserMedia === undefined) {
+    throw new StreamApiNotSupportedError()
+  }
+
+  // This is a browser API only shim. It patches the global window object which
+  // is not available during SSR. So we lazily apply this shim at runtime.
+  shimGetUserMedia()
+
+  // console.debug('[vue-qrcode-reader] calling getUserMedia')
+  // const stream = await navigator.mediaDevices.getUserMedia({
+  //   audio: false,
+  //   video: constraints
+  // })
+
+  // if (videoEl.srcObject !== undefined) {
+  //   videoEl.srcObject = stream
+  // } else if (videoEl.mozSrcObject !== undefined) {
+  //   videoEl.mozSrcObject = stream
+  // } else if (window.URL.createObjectURL) {
+  //   videoEl.src = (window.URL.createObjectURL as CreateObjectURLCompat)(stream)
+  // } else if (window.webkitURL) {
+  //   videoEl.src = (window.webkitURL.createObjectURL as CreateObjectURLCompat)(stream)
+  // } else {
+  //   videoEl.src = stream.id
+  // }
+
+  // In the WeChat browser on iOS,
+  // 'loadeddata' event won't get fired
+  // unless video is explictly triggered by play()
+  // videoEl.play()
+
+  // console.debug('[vue-qrcode-reader] waiting for video element to load')
+  // await Promise.race([
+  //   eventOn(videoEl, 'loadeddata'),
+
+    // On iOS devices in PWA mode, QrcodeStream works initially, but after
+    // killing and restarting the PWA, all video elements fail to load camera
+    // streams and never emit the `loadeddata` event. Looks like this is
+    // related to a WebKit issue (see #298). No workarounds at the moment.
+    // To at least detect this situation, we throw an error if the event
+    // has not been emitted after a 6 second timeout.
+  //   timeout(6_000).then(() => {
+  //     throw new StreamLoadTimeoutError()
+  //   })
+  // ])
+  // console.debug('[vue-qrcode-reader] video element loaded')
+
+  // According to: https://oberhofer.co/mediastreamtrack-and-its-capabilities/#queryingcapabilities
+  // On some devices, getCapabilities only returns a non-empty object after
+  // some delay. There is no appropriate event so we have to add a constant timeout
+  // await timeout(500)
+
+  const [track] = stream.getVideoTracks()
+
+  const capabilities: Partial<MediaTrackCapabilities> = track?.getCapabilities?.() ?? {}
+  // const filteredConstraints: MediaTrackConstraints = Object.keys(constraints)
+  //   .filter((key) => key in capabilities)
+  //   .reduce((acc, key) => {
+  //     acc[key] = constraints[key]
+  //     return acc
+  //   }, {})
+
+  // console.log(filteredConstraints)
+  // let isTorchOn = false
+  // if (torch && capabilities.torch) {
+  //   filteredConstraints.advanced = [
+  //     ...(filteredConstraints.advanced || []),
+  //     { torch: true }
+  //   ];
+  //   isTorchOn = true
+  // }
+
+
+  let isTorchOn = false
+  if (torch && capabilities.torch) {
+    const updatedConstraints = {
+      ...constraints,
+      advanced: [...(constraints.advanced || []), { torch: true }]
+    };
+    isTorchOn = true
+    await track.applyConstraints(updatedConstraints);
+  } else {
+    await track.applyConstraints(constraints);
+  }
+
+
+  console.debug('[vue-qrcode-reader] camera ready')
+  return {
+    type: 'update',
+    data: {
+      videoEl,
+      stream,
+      capabilities,
+      constraints,
+      isTorchOn
+    }
+  }
+}
+
+export async function update(
+  videoEl: HTMLVideoElement,
+  {
+    constraints,
+    torch,
+    restart = false
+  }: {
+    constraints: MediaTrackConstraints
+    torch: boolean
+    restart?: boolean
+  }
+): Promise<Partial<MediaTrackCapabilities>> {
+  // update the task queue synchronously
+  taskQueue = taskQueue
+    .then((prevTaskResult) => {
+      if (prevTaskResult.type === 'start' || prevTaskResult.type === 'update') {
+        // previous task is a start task
+        // we'll check if we can reuse the previous result
+        const {
+          data: {
+            videoEl: prevVideoEl,
+            stream: prevStream,
+            constraints: prevConstraints,
+            isTorchOn: prevIsTorchOn
+          }
+        } = prevTaskResult
+
+        // Something changed that requires a restart
+        if (areConstraintsEqual(constraints, prevConstraints, true)) {
+          console.debug('[vue-qrcode-reader] Only advanced constraints updated, applying directly.');
+          return runUpdateTask(prevStream, videoEl, constraints, torch);
+        } else {
+          console.debug('[vue-qrcode-reader] Non-advanced constraints changed, restarting camera.');
+          return runStopTask(prevVideoEl, prevStream, prevIsTorchOn).then(() =>
+            runStartTask(videoEl, constraints, torch)
+          );
+        }
+
+      } else if (prevTaskResult.type === 'stop' || prevTaskResult.type === 'failed') {
+        // previous task is a stop/error task
+        // we can safely start
+        return runStartTask(videoEl, constraints, torch)
+      }
+
+      assertNever(prevTaskResult)
+    })
+    .catch((error: Error) => {
+      console.debug(`[vue-qrcode-reader] updating camera failed with "${error}"`)
+      return { type: 'failed', error }
+    })
+
+  // await the task queue asynchronously
+  const taskResult = await taskQueue
+
+  if (taskResult.type === 'stop') {
+    // we just synchronously updated the task above
+    // to make the latest task a start task
+    // so this case shouldn't happen
+    throw new Error('Something went wrong with the camera task queue (update task).')
+  } else if (taskResult.type === 'failed') {
+    throw taskResult.error
+  } else if (taskResult.type === 'update' || taskResult.type === 'start') {
+    // return the data we want
+    return taskResult.data.capabilities
+  }
+
+  assertNever(taskResult)
+}
+
+function areConstraintsEqual(
+  constraintsA: MediaTrackConstraints,
+  constraintsB: MediaTrackConstraints,
+  ignoreAdvanced: boolean
+): boolean {
+  const filteredA = { ...constraintsA };
+  const filteredB = { ...constraintsB };
+
+  if (ignoreAdvanced) {
+    delete filteredA.advanced;
+    delete filteredB.advanced;
+  }
+
+  return JSON.stringify(filteredA) === JSON.stringify(filteredB);
 }
 
 async function runStopTask(

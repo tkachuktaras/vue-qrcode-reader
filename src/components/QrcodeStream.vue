@@ -1,8 +1,8 @@
 <template>
   <div :style="wrapperStyle">
-    <!-- 
-      All immediate children of the wrapper div are stacked upon each other. 
-      The z-index is implicitly given by the (inverse) element order. 
+    <!--
+      All immediate children of the wrapper div are stacked upon each other.
+      The z-index is implicitly given by the (inverse) element order.
 
       The video element is at the very bottom, the pause frame canvas is above it,
       the tracking layer is yet above and finally at the very top is the slot
@@ -195,15 +195,15 @@ watch(
       // So in this interaction scanning breaks. To prevent that we explicitly set `cameraActive`
       // to `false` here. That is not just a hack but also makes semantically sense, because
       // the camera is briefly inactive right before requesting a new camera.
-      cameraController.stop()
-      cameraActive.value = false
+      // cameraController.stop()
+      // cameraActive.value = false
 
       // start camera
       try {
         // Usually, when the component is destroyed the `onUnmounted` hook takes care of stopping the camera.
         // However, if the component is destroyed while we are in the middle of starting the camera, then
         // the `onUnmounted` hook might fire before the following promise resolves ...
-        const capabilities = await cameraController.start(videoEl, newSettings)
+        const capabilities = await cameraController.update(videoEl, newSettings)
         // ... thus we check whether the component is still alive right after the promise resolves and stop
         // the camera otherwise.
         if (!isMounted.value) {
@@ -213,6 +213,7 @@ watch(
           emit('camera-on', capabilities)
         }
       } catch (error) {
+        console.log(error);
         emit('error', error)
       }
     } else {
