@@ -1,0 +1,4 @@
+{
+  "**/*.{vue,ts}": ["pnpm lint"],
+  "**/*.{vue,ts,json,md}": ["pnpm format"]
+}
