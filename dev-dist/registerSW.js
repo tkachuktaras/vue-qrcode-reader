@@ -1,1 +1,0 @@
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/vue-qrcode-reader/dev-sw.js?dev-sw', { scope: '/vue-qrcode-reader/', type: 'classic' })
