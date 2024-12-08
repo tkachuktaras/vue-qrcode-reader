@@ -79,16 +79,16 @@ define(['./workbox-ab7aa862'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "404.html",
-    "revision": "69b960fbeb7fc5bd3fb59ad28d1ce5f4"
+    "revision": "419294367dd6477bbc4612328b76bcb5"
   }, {
     "url": "api/QrcodeCapture.html",
-    "revision": "8c9a684621b098bf9fa463585b272c4c"
+    "revision": "45840d2e3338c0f6e445ebe5f54b88a9"
   }, {
     "url": "api/QrcodeDropZone.html",
-    "revision": "776b1f52841e7da5f2f57db3f96efaed"
+    "revision": "a1c1df765c846f34caa6f8702dffde5a"
   }, {
     "url": "api/QrcodeStream.html",
-    "revision": "1ac001f0f51fd9520886e9fb8a0539c1"
+    "revision": "64aa9c68d303e977998bf5d172fb464e"
   }, {
     "url": "assets/api_QrcodeCapture.md.D3YGeqLy.js",
     "revision": null
@@ -168,10 +168,10 @@ define(['./workbox-ab7aa862'], (function (workbox) { 'use strict';
     "url": "assets/demos_Simple.md.34EbnLaF.lean.js",
     "revision": null
   }, {
-    "url": "assets/demos_SwitchCamera.md.ZeQeQo-x.js",
+    "url": "assets/demos_SwitchCamera.md.kp8-EnEi.js",
     "revision": null
   }, {
-    "url": "assets/demos_SwitchCamera.md.ZeQeQo-x.lean.js",
+    "url": "assets/demos_SwitchCamera.md.kp8-EnEi.lean.js",
     "revision": null
   }, {
     "url": "assets/demos_Torch.md.DUhfd_PY.js",
@@ -240,7 +240,7 @@ define(['./workbox-ab7aa862'], (function (workbox) { 'use strict';
     "url": "assets/inter-roman-vietnamese.paY3CzEB.woff2",
     "revision": null
   }, {
-    "url": "assets/style.3aGICQdT.css",
+    "url": "assets/style.ehRLNwci.css",
     "revision": null
   }, {
     "url": "camera-switch.svg",
@@ -253,34 +253,34 @@ define(['./workbox-ab7aa862'], (function (workbox) { 'use strict';
     "revision": "41d3e7f3f5512f9d6bd4e71fe1879a56"
   }, {
     "url": "demos/DragDrop.html",
-    "revision": "a59a40dc62fdb1cff158e5a2636dae32"
+    "revision": "644766c13718c729f96c8c7b29d97ba9"
   }, {
     "url": "demos/FullDemo.html",
-    "revision": "ab9b240a3143842c90fb70cef5fe2bc5"
+    "revision": "16757820babde3febad3d667ceaed8b6"
   }, {
     "url": "demos/Fullscreen.html",
-    "revision": "f45ed937e3efb30bb780712bb065f667"
+    "revision": "74105f8ce10c88ac8ff87e8703df1af8"
   }, {
     "url": "demos/LoadingIndicator.html",
-    "revision": "297a0aabf121a7c9a66cc7ae7a4496dc"
+    "revision": "c68e99ecaa509cf39e81be2bf0b75ae3"
   }, {
     "url": "demos/ScanSameQrcodeMoreThanOnce.html",
-    "revision": "fff04b8ef649b6f608dec70462e3d649"
+    "revision": "408f8c87d73db2b5bc9ab32e97ed8eeb"
   }, {
     "url": "demos/Simple.html",
-    "revision": "95b955939a21d76aef98ce411151999e"
+    "revision": "de6ffc2dda301078cb56d860d9cf7de3"
   }, {
     "url": "demos/SwitchCamera.html",
-    "revision": "e0ed918d18000473ba6b35381f89fec9"
+    "revision": "dd95189b525157fb0cda331a2be4ce99"
   }, {
     "url": "demos/Torch.html",
-    "revision": "ea28d9824be0bea74619a39fbb396eeb"
+    "revision": "4742eeac5dbc71664f20e54ab22bb92a"
   }, {
     "url": "demos/Upload.html",
-    "revision": "7d35b9c20c9e332fa74c317b46632eee"
+    "revision": "ff9935abbfcc070b29d6f3256c6e0fef"
   }, {
     "url": "demos/Validate.html",
-    "revision": "231adcba3553b099005abfbf8dda7469"
+    "revision": "ff93bea9ebdb8905e54ab048e2e23a32"
   }, {
     "url": "flash-off.svg",
     "revision": "8b05f5dcd6712992a544b34520ec7262"
@@ -295,7 +295,7 @@ define(['./workbox-ab7aa862'], (function (workbox) { 'use strict';
     "revision": "432c44f09de0b4e0f9e236fad9b8c7f9"
   }, {
     "url": "index.html",
-    "revision": "dce7bc214cb8f5cd267c41d6c0605daf"
+    "revision": "8101e2f606b0b7d3f1d53cda7b6fe6a3"
   }, {
     "url": "logo.png",
     "revision": "5f0c1d6358641bc48207acb9fa0b6182"
